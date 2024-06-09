@@ -24952,12 +24952,16 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const core = __importStar(__nccwpck_require__(2186));
 const wait_1 = __nccwpck_require__(5259);
+const child_process_1 = __nccwpck_require__(2081);
 /**
  * The main function for the action.
  * @returns {Promise<void>} Resolves when the action is complete.
  */
 async function run() {
     try {
+        (0, child_process_1.execSync)(`npm install -g appcircle`, { stdio: 'inherit' });
+        const acAccessToken = process.env['AC_ACCESS_TOKEN'];
+        console.log(`AC_ACCESS_TOKEN: ${acAccessToken}`);
         const ms = core.getInput('milliseconds');
         // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
         core.debug(`Waiting ${ms} milliseconds ...`);
@@ -25025,6 +25029,14 @@ module.exports = require("async_hooks");
 
 "use strict";
 module.exports = require("buffer");
+
+/***/ }),
+
+/***/ 2081:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("child_process");
 
 /***/ }),
 

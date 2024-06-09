@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
 import { wait } from './wait'
+import { exec, execSync } from 'child_process'
 
 /**
  * The main function for the action.
@@ -7,6 +8,10 @@ import { wait } from './wait'
  */
 export async function run(): Promise<void> {
   try {
+    execSync(`npm install -g appcircle`, { stdio: 'inherit' })
+    const acAccessToken = process.env['AC_ACCESS_TOKEN']
+    console.log(`AC_ACCESS_TOKEN: ${acAccessToken}`)
+
     const ms: string = core.getInput('milliseconds')
 
     // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true

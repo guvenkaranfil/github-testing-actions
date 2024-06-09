@@ -58,6 +58,8 @@ jobs:
         uses: ./
         with:
           milliseconds: 2000
+          env:
+            AC_ACCESS_TOKEN: ${{ secrets.AC_ACCESS_TOKEN }}
 
       - name: Print Output
         id: output
