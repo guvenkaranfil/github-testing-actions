@@ -8,7 +8,7 @@ import { exec, execSync } from 'child_process'
  */
 export async function run(): Promise<void> {
   try {
-    execSync(`npm install -g appcircle`, { stdio: 'inherit' })
+    execSync(`npm install -g @appcircle/cli`, { stdio: 'inherit' })
     const acAccessToken = process.env['AC_ACCESS_TOKEN']
     console.log(`AC_ACCESS_TOKEN: ${acAccessToken}`)
 
